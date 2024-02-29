@@ -18,6 +18,12 @@ const scene = new THREE.Scene()
  * Lights
  */
 
+const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+scene.add(ambientLight)
+const ambientLightFolder = gui.addFolder('Ambient Light')
+ambientLightFolder.add(ambientLight, 'intensity').min(0).max(3).step(0.001)
+ambientLightFolder.addColor(ambientLight, 'color')
+
 /**
  * Objects
  */
