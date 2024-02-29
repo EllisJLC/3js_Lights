@@ -84,6 +84,17 @@ spotLightFolder.add(spotLight.target.position, 'y').min(-2).max(2).step(0.01).na
 spotLightFolder.add(spotLight.target.position, 'z').min(-2).max(2).step(0.01).name("Target z")
 spotLightFolder.addColor(spotLight, 'color')
 
+// Helpers
+
+// const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 0.2)
+// scene.add(hemisphereLightHelper)
+
+// const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight, 0,2)
+// scene.add(directionalLightHelper)
+
+// const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.2)
+// scene.add(pointLightHelper)
+
 
 /**
  * Objects
