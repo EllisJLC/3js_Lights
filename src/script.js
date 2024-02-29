@@ -24,6 +24,16 @@ const ambientLightFolder = gui.addFolder('Ambient Light')
 ambientLightFolder.add(ambientLight, 'intensity').min(0).max(3).step(0.001)
 ambientLightFolder.addColor(ambientLight, 'color')
 
+const directionalLight = new THREE.DirectionalLight(0x00fffc, 0.9)
+directionalLight.position.set(1, 0.25, 0)
+scene.add(directionalLight)
+const directionalLightFolder = gui.addFolder('Directional Light')
+directionalLightFolder.add(directionalLight, 'intensity').min(0).max(3).step(0.001)
+directionalLightFolder.add(directionalLight.position, 'x').min(-2).max(2).step(0.01)
+directionalLightFolder.add(directionalLight.position, 'y').min(-2).max(2).step(0.01)
+directionalLightFolder.add(directionalLight.position, 'z').min(-2).max(2).step(0.01)
+directionalLightFolder.addColor(directionalLight, 'color')
+
 /**
  * Objects
  */
