@@ -34,6 +34,26 @@ directionalLightFolder.add(directionalLight.position, 'y').min(-2).max(2).step(0
 directionalLightFolder.add(directionalLight.position, 'z').min(-2).max(2).step(0.01)
 directionalLightFolder.addColor(directionalLight, 'color')
 
+const hemisphereLight = new THREE.HemisphereLight(0xff000, 0x0000ff, 0.9)
+scene.add(hemisphereLight)
+const hemisphereLightFolder = gui.addFolder('Hemisphere Light')
+hemisphereLightFolder.add(hemisphereLight, 'intensity').min(0).max(3).step(0.001)
+hemisphereLightFolder.addColor(hemisphereLight, 'color')
+hemisphereLightFolder.addColor(hemisphereLight, 'groundColor')
+
+const pointLight = new THREE.PointLight(0xff9000, 1.5, 1)
+pointLight.position.set(1, -0.5, 1)
+scene.add(pointLight)
+const pointLightFolder = gui.addFolder('Point Light')
+pointLightFolder.add(pointLight, 'intensity').min(0).max(3).step(0.001)
+pointLightFolder.add(pointLight.position, 'x').min(-2).max(2).step(0.01)
+pointLightFolder.add(pointLight.position, 'y').min(-2).max(2).step(0.01)
+pointLightFolder.add(pointLight.position, 'z').min(-2).max(2).step(0.01)
+pointLightFolder.add(pointLight, 'distance').min(0).max(6).step(0.01)
+pointLightFolder.add(pointLight, 'decay').min(0).max(3).step(0.01)
+pointLightFolder.addColor(pointLight, 'color')
+
+
 /**
  * Objects
  */
