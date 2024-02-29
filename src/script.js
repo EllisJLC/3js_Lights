@@ -18,13 +18,13 @@ const scene = new THREE.Scene()
  * Lights
  */
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0)
 scene.add(ambientLight)
 const ambientLightFolder = gui.addFolder('Ambient Light')
 ambientLightFolder.add(ambientLight, 'intensity').min(0).max(3).step(0.001)
 ambientLightFolder.addColor(ambientLight, 'color')
 
-const directionalLight = new THREE.DirectionalLight(0x00fffc, 0.9)
+const directionalLight = new THREE.DirectionalLight(0x00fffc, 0)
 directionalLight.position.set(1, 0.25, 0)
 scene.add(directionalLight)
 const directionalLightFolder = gui.addFolder('Directional Light')
@@ -34,14 +34,14 @@ directionalLightFolder.add(directionalLight.position, 'y').min(-2).max(2).step(0
 directionalLightFolder.add(directionalLight.position, 'z').min(-2).max(2).step(0.01)
 directionalLightFolder.addColor(directionalLight, 'color')
 
-const hemisphereLight = new THREE.HemisphereLight(0xff000, 0x0000ff, 0.9)
+const hemisphereLight = new THREE.HemisphereLight(0xff000, 0x0000ff, 0)
 scene.add(hemisphereLight)
 const hemisphereLightFolder = gui.addFolder('Hemisphere Light')
 hemisphereLightFolder.add(hemisphereLight, 'intensity').min(0).max(3).step(0.001)
 hemisphereLightFolder.addColor(hemisphereLight, 'color')
 hemisphereLightFolder.addColor(hemisphereLight, 'groundColor')
 
-const pointLight = new THREE.PointLight(0xff9000, 1.5, 1)
+const pointLight = new THREE.PointLight(0xff9000, 0, 1)
 pointLight.position.set(1, -0.5, 1)
 scene.add(pointLight)
 const pointLightFolder = gui.addFolder('Point Light')
@@ -53,6 +53,21 @@ pointLightFolder.add(pointLight, 'distance').min(0).max(6).step(0.01)
 pointLightFolder.add(pointLight, 'decay').min(0).max(3).step(0.01)
 pointLightFolder.addColor(pointLight, 'color')
 
+const rectAreaLight = new THREE.RectAreaLight(0x4e00ff, 0, 1, 1)
+rectAreaLight.position.set(-1.5, 0, 1.5)
+rectAreaLight.lookAt(new THREE.Vector3())
+scene.add(rectAreaLight)
+const rectAreaLightFolder = gui.addFolder('Rect Area Light')
+rectAreaLightFolder.add(rectAreaLight, 'intensity').min(0).max(6).step(0.001)
+rectAreaLightFolder.add(rectAreaLight.position, 'x').min(-2).max(2).step(0.01).onChange( () => {
+    rectAreaLight.lookAt(new THREE.Vector3())
+})
+rectAreaLightFolder.add(rectAreaLight.position, 'y').min(-2).max(2).step(0.01).onChange( () => {
+    rectAreaLight.lookAt(new THREE.Vector3())
+})
+rectAreaLightFolder.add(rectAreaLight.position, 'z').min(-2).max(2).step(0.01).onChange( () => {
+    rectAreaLight.lookAt(new THREE.Vector3())
+})
 
 /**
  * Objects
