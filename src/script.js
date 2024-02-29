@@ -68,6 +68,22 @@ rectAreaLightFolder.add(rectAreaLight.position, 'y').min(-2).max(2).step(0.01).o
 rectAreaLightFolder.add(rectAreaLight.position, 'z').min(-2).max(2).step(0.01).onChange( () => {
     rectAreaLight.lookAt(new THREE.Vector3())
 })
+rectAreaLightFolder.addColor(rectAreaLight, 'color')
+
+const spotLight = new THREE.SpotLight(0x78ff00, 4.5, 10, Math.PI * 0.1, 0.25, 1)
+spotLight.position.set(0, 2, 3)
+scene.add(spotLight)
+scene.add(spotLight.target)
+const spotLightFolder = gui.addFolder("Spotlight")
+spotLightFolder.add(spotLight, 'intensity').min(0).max(6).step(0.001)
+spotLightFolder.add(spotLight.position, 'x').min(-2).max(2).step(0.01).name("Spotlight x")
+spotLightFolder.add(spotLight.position, 'y').min(-2).max(2).step(0.01).name("Spotlight y")
+spotLightFolder.add(spotLight.position, 'z').min(-2).max(2).step(0.01).name("Spotlight z")
+spotLightFolder.add(spotLight.target.position, 'x').min(-2).max(2).step(0.01).name("Target x")
+spotLightFolder.add(spotLight.target.position, 'y').min(-2).max(2).step(0.01).name("Target y")
+spotLightFolder.add(spotLight.target.position, 'z').min(-2).max(2).step(0.01).name("Target z")
+spotLightFolder.addColor(spotLight, 'color')
+
 
 /**
  * Objects
